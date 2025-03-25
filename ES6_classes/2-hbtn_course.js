@@ -35,14 +35,14 @@ export default class HolbertonCourse {
 
   set students(value) {
     if (Array.isArray(value)) {
-      for (const student of value) {
-        if (typeof student !== 'string') {
-          throw new TypeError('Each student must be a string');
+      for (const i in value) {
+        if (typeof value[i] !== 'string') {
+          throw new TypeError('Students must be a string');
         }
       }
-      this._students = value;
     } else {
       throw new TypeError('Students must be an array');
     }
+    this._students = value;
   }
 }
