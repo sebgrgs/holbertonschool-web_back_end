@@ -33,8 +33,8 @@ export default class HolbertonCourse {
 
   set students(value) {
     if (typeof value === 'object') {
-      for (const i in value) {
-        if (typeof i !== 'string') {
+      for (const student in value) {
+        if (typeof student !== 'string') {
           throw new TypeError('Students must be a string');
         }
       }
