@@ -18,19 +18,17 @@ export default class HolbertonCourse {
   }
 
   set name(value) {
-    if (typeof value === 'string') {
-      this._name = value;
-    } else {
+    if (typeof value !== 'string') {
       throw new TypeError('Name must be a string');
     }
+    this._name = value;
   }
 
   set length(value) {
-    if (typeof value === 'number') {
-      this._length = value;
-    } else {
+    if (typeof value !== 'number') {
       throw new TypeError('Length must be a number');
     }
+    this._length = value;
   }
 
   set students(value) {
