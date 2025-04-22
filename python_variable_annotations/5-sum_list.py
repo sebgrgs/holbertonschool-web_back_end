@@ -5,6 +5,6 @@ and returns the sum of the list as a float.
 from typing import List
 
 
-def sum_list(input_list: List) -> float:
+def sum_list(input_list: List[float]) -> float:
     """Returns the sum of the list as a float."""
     return sum(input_list)
