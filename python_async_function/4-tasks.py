@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+"""Module that contains a function to spawn tasks."""
 
 import asyncio
 from typing import List
