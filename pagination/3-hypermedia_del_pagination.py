@@ -40,12 +40,28 @@ class Server:
         return self.__indexed_dataset
 
     def get_hyper_index(self, index: int = None, page_size: int = 10) -> Dict:
-            assert type(index) is int and index >= 0
-            assert type(page_size) is int and page_size > 0
-            data = self.indexed_dataset()
-            return {
-                 'index': index,
-                 'next_index': index + page_size,
-                 'page_size': page_size,
-                 'data': data
-            }
+        """Return pagination info with resilience to deleted indices"""
+        assert type(index) is int and index >= 0
+        assert type(page_size) is int and page_size > 0
+
+        data_dict = self.indexed_dataset()
+        max_idx = max(data_dict.keys())
+
+        assert index <= max_idx
+
+        current_page_data = []
+        current_idx = index
+        count = 0
+
+        while count < page_size and current_idx <= max_idx:
+            if current_idx in data_dict:
+                current_page_data.append(data_dict[current_idx])
+                count += 1
+            current_idx += 1
+
+        return {
+            'index': index,
+            'next_index': current_idx,
+            'page_size': page_size,
+            'data': current_page_data
+        }
