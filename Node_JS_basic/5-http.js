@@ -12,10 +12,10 @@ const app = http.createServer((req, res) => {
   } else if (req.url === '/students') {
     countStudents(database)
       .then((output) => {
-        res.end(`This is the list of our students\n${output}`);
+        res.end(`This is the list of our students${output}`);
       })
       .catch((err) => {
-        res.end(`This is the list of our students\n${err.message}`);
+        res.end(`This is the list of our students${err.message}`);
       });
   } else {
     res.statusCode = 404;
