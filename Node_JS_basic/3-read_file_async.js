@@ -24,7 +24,7 @@ async function countStudents(path) {
       fields[field].push(firstname);
     }
 
-    let output = `Number of students: ${total}`;
+    let output = `\nNumber of students: ${total}`;
     for (const [field, names] of Object.entries(fields)) {
       output += `\nNumber of students in ${field}: ${names.length}. List: ${names.join(', ')}`;
     }
