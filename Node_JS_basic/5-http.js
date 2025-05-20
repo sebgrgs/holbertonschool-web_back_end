@@ -5,16 +5,15 @@ const database = process.argv[2];
 
 const app = http.createServer((req, res) => {
   if (req.url === '/') {
-	res.write('Hello Holberton School!');
-	res.end();
+    res.write('Hello Holberton School!');
+    res.end();
   } else if (req.url === '/students') {
-	res.write('This is the list of our students');
-	countStudents(database)
-	  .then((output) => {
-		res.write(output);
-		res.end();
-	  })
+    res.write('This is the list of our students');
+    countStudents(database)
+      .then((output) => {
+        res.write(output);
+        res.end();
+      });
   }
-}
-).listen(1245);
+}).listen(1245);
 module.exports = app;
