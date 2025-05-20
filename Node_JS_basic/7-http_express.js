@@ -6,9 +6,11 @@ const database = process.argv[2];
 const app = express();
 
 app.get('/', (req, res) => {
+  res.set('Content-Type', 'text/plain');
   res.send('Hello Holberton School!');
 });
 app.get('/students', (req, res) => {
+  res.set('Content-Type', 'text/plain');
   res.write('This is the list of our students');
   countStudents(database)
     .then((output) => {

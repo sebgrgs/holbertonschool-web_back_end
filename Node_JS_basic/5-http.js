@@ -5,9 +5,11 @@ const database = process.argv[2];
 
 const app = http.createServer((req, res) => {
   if (req.url === '/') {
+    res.set('Content-Type', 'text/plain');
     res.write('Hello Holberton School!');
     res.end();
   } else if (req.url === '/students') {
+    res.set('Content-Type', 'text/plain');
     res.write('This is the list of our students');
     countStudents(database)
       .then((output) => {
