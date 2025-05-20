@@ -13,7 +13,14 @@ const app = http.createServer((req, res) => {
       .then((output) => {
         res.write(output);
         res.end();
+      })
+      .catch((err) => {
+        res.write(err.message);
+        res.end();
       });
+  } else {
+    res.statusCode = 404;
+    res.end('Not found');
   }
 }).listen(1245);
 module.exports = app;
